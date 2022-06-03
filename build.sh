@@ -16,9 +16,9 @@ done
 cd $CDIR
 rm -rf $build_dir && mkdir -p $build_dir
 
-for f in *prerun.sh home
+for f in *prerun.sh $HOME/dotfiles/config
 do
-    cp -r $CDIR/$f $build_dir/
+    cp -r $f $build_dir/
 done
 
 if [ -x "$(command -v pip)" ]; then

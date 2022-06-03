@@ -6,16 +6,12 @@ fi
 
 if [[ ! -f $done_file ]]; then
   CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-  cd $CURR_DIR/home
-  for item in $(shopt -s dotglob && cd $CURR_DIR/home && find *); do
+  cd $CURR_DIR/config
+  for item in $(shopt -s dotglob && cd $CURR_DIR/config && find *); do
 
     item_basedir=`echo $item | cut -d "/" -f1`
-    target_item=$XXH_HOME/$item
-    target_dir=`dirname $target_item`
-    if [[ $item_basedir == '.config' && $XDG_CONFIG_HOME ]]; then
-      target_dir=`dirname $XDG_CONFIG_HOME`
-      target_item=$target_dir/$item
-    fi
+    target_dir=`dirname $XDG_CONFIG_HOME`
+    target_item=$target_dir/$item
 
     if [[ -f $item && ! -f $target_item ]]; then
       if [[ $XXH_VERBOSE == '1' || $XXH_VERBOSE == '2' ]]; then
