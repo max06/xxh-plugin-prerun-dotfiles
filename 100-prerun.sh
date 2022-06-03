@@ -11,7 +11,7 @@ if [[ ! -f $done_file ]]; then
 
     item_basedir=`echo $item | cut -d "/" -f1`
     target_dir=`dirname $XDG_CONFIG_HOME`
-    target_item=$target_dir/$item
+    target_item=$target_dir/.config/$item
 
     if [[ -f $item && ! -f $target_item ]]; then
       if [[ $XXH_VERBOSE == '1' || $XXH_VERBOSE == '2' ]]; then
